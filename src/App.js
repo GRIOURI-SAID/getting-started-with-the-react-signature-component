@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import { SignatureComponent, Signature } from '@syncfusion/ej2-react-inputs';
+
 function App() {
+
+  let signObj: Signature | null;
+  const OnSave = () => {
+    signObj?.save();
+  }
+  const OnClear = () => {
+    signObj?.clear();
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SignatureComponent ref={sign => signObj = sign}
+       >
+    
+      </SignatureComponent>
+
+      <div id="actionBtn">
+        <button onClick={OnSave}>Save</button>
+        <button onClick={OnClear}>Clear</button>
+      </div>
     </div>
   );
 }
